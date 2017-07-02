@@ -1,0 +1,9 @@
+- name: Install 389DS packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - 389-ds-base
+- copy:
+    src: 389DS/schema/
+    dest: /etc/dirsrv/slapd-fusiondir/schema/

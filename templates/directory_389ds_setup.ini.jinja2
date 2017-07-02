@@ -1,0 +1,35 @@
+[General]
+FullMachineName = {{ ansible_fqdn }}
+ServerRoot = /usr/lib64/dirsrv
+StrictHostCheck = true
+SuiteSpotGroup = dirsrv
+SuiteSpotUserID = dirsrv
+[slapd]
+AddOrgEntries = Yes
+AddSampleEntries = No
+HashedRootDNPwd = {{ 389ds_ldap_rootdn_hashed_password }}
+InstScriptsEnabled = true
+InstallLdifFile = suggest
+RootDN = {{ 389ds_ldap_rootdn }},{{389ds_ldap_suffix}}
+RootDNPwd = {{ 389ds_ldap_rootdn_password }}
+ServerIdentifier = {{ 389ds_ldap_identifier }}
+ServerPort = 389
+Suffix = dc=dev,dc=fundp,dc=ac,dc=be
+bak_dir = /var/lib/dirsrv/slapd-{{ 389ds_ldap_identifier }}/bak
+bindir = /usr/bin
+cert_dir = /etc/dirsrv/slapd-{{ 389ds_ldap_identifier }}
+config_dir = /etc/dirsrv/slapd-{{ 389ds_ldap_identifier }}
+datadir = /usr/share
+db_dir = /var/lib/dirsrv/slapd-{{ 389ds_ldap_identifier }}/db
+ds_bename = userRoot
+inst_dir = /usr/lib64/dirsrv/slapd-{{ 389ds_ldap_identifier }}
+ldif_dir = /var/lib/dirsrv/slapd-{{ 389ds_ldap_identifier }}/ldif
+localstatedir = /var
+lock_dir = /var/lock/dirsrv/slapd-{{ 389ds_ldap_identifier }}
+log_dir = /var/log/dirsrv/slapd-{{ 389ds_ldap_identifier }}
+naming_value = dev
+run_dir = /var/run/dirsrv
+sbindir = /usr/sbin
+schema_dir = /etc/dirsrv/slapd-{{ 389ds_ldap_identifier }}/schema
+sysconfdir = /etc
+tmp_dir = /tmp
