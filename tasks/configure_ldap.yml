@@ -1,7 +1,14 @@
 - name: Create 389DS ini config file (will be used by 389DS)
   template:
     src: directory_389ds_setup.ini.jinja2
-    dest: /tmp/directory_389ds_setup.ini
+    dest: /tmp/{{ ds_ldap_identifier }}_389ds_setup.ini
 
 - name: Deploy a new instance of 389DS
-  command: setup-ds.pl --file=/tmp/directory_389ds_setup.ini --silent
+  command: setup-ds.pl --file=/tmp/{{ ds_ldap_identifier }}_389ds_setup.ini --silent
+  args:
+    creates: "/var/lib/dirsrv/slapd-{{ ds_ldap_identifier }}"
+
+- name: Delete old init config file
+  file:
+    path: /tmp/{{ ds_ldap_identifier }}_389ds_setup.ini
+    state: absent
