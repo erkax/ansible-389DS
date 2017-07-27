@@ -1,2 +1,7 @@
 ---
 # defaults file for erkax.389DS
+ds_ldap_rootdn: "cn=root"
+ds_ldap_rootdn_password: "admin_pass"
+ds_ldap_suffix: "dc=example,dc=com"
+ds_ldap_identifier: "example"
+ds_ldap_rootdn_hashed_password: "yooy"

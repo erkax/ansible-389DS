@@ -1,3 +1,4 @@
 ---
 # tasks file for erkax.389DS
+- include: install_packages.yml
 - include: configure_ldap.yml

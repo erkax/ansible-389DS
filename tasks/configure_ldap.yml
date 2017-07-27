@@ -1,9 +1,7 @@
-- name: Install 389DS packages
-  yum:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - 389-ds-base
-- copy:
-    src: 389DS/schema/
-    dest: /etc/dirsrv/slapd-fusiondir/schema/
+- name: Create 389DS ini config file (will be used by 389DS)
+  template:
+    src: directory_389ds_setup.ini.jinja2
+    dest: /tmp/directory_389ds_setup.ini
+
+- name: Deploy a new instance of 389DS
+  command: setup-ds.pl --file=/tmp/directory_389ds_setup.ini --silent

@@ -1,0 +1,7 @@
+---
+- name: Install 389DS required packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - 389-ds-base
